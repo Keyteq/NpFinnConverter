@@ -99,6 +99,12 @@
           <xsl:value-of select="."/>
         </re:distance>
         <re:poitype><xsl:value-of select="$type"/></re:poitype>
+        <xsl:if test="count(@childrens) > 0">
+          <re:count name="children">@childrens</re:count>
+        </xsl:if>
+        <xsl:if test="count(@classes) > 0">
+          <re:count name="years">@classes</re:count>
+        </xsl:if>
       </ExtendedData>
     </Placemark>
   </xsl:template>
