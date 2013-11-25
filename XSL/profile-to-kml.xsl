@@ -100,10 +100,10 @@
         </re:distance>
         <re:poitype><xsl:value-of select="$type"/></re:poitype>
         <xsl:if test="count(@childrens) > 0">
-          <re:count name="children">@childrens</re:count>
+          <re:count name="children"><xsl:value-of select="@childrens"/></re:count>
         </xsl:if>
         <xsl:if test="count(@classes) > 0">
-          <re:count name="years">@classes</re:count>
+          <re:count name="years"><xsl:value-of select="@childrens"/></re:count>
         </xsl:if>
       </ExtendedData>
     </Placemark>
