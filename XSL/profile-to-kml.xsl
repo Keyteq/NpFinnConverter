@@ -103,7 +103,7 @@
           <re:count name="children"><xsl:value-of select="@childrens"/></re:count>
         </xsl:if>
         <xsl:if test="count(@classes) > 0">
-          <re:count name="years"><xsl:value-of select="@childrens"/></re:count>
+          <re:count name="years"><xsl:value-of select="@classes"/></re:count>
         </xsl:if>
       </ExtendedData>
     </Placemark>
