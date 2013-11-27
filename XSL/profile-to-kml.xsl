@@ -14,6 +14,7 @@
       </Document>
     </kml>
   </xsl:template>
+
   <xsl:template match="//site">
     <xal:AddressDetails>
       <xal:PostalServiceElements>
@@ -68,8 +69,25 @@
           </xal:PostalCode>
         </xsl:if>
       </xal:Country>
+      <xsl:if test="count(moh) > 0">
+        <re:altitude>
+          <xsl:value-of select="moh"/>
+        </re:altitude>
+      </xsl:if>
+      <xsl:if test="count(sea) > 0">
+        <re:distance>
+          <xsl:attribute name="approx">
+            <xsl:value-of select="string(contains(sea, '*'))"/>
+          </xsl:attribute>
+          <xsl:attribute name="type">
+            <xsl:text>ocean</xsl:text>
+          </xsl:attribute>
+          <xsl:value-of select="sea"/>
+        </re:distance>
+      </xsl:if>
     </xal:AddressDetails>
   </xsl:template>
+
   <xsl:template match="//pois/poigroup">
     <Folder>
       <name><xsl:value-of select="@name"/></name>
@@ -94,7 +112,7 @@
       <ExtendedData>
         <re:distance>
           <xsl:attribute name="approx">
-            <xsl:value-of select="contains(text(), '*')"/>
+            <xsl:value-of select="string(contains(text(), '*'))"/>
           </xsl:attribute>
           <xsl:value-of select="."/>
         </re:distance>
